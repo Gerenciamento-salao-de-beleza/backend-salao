@@ -18,8 +18,16 @@ public class AgendamentoRepositoryImpl implements AgendamentosRepository {
     @Transactional
     public void insert(Agendamentos agendamentos) {
         var query = """
-            INSERT INTO agendamentos(funcionario_id, nome_cliente, telefone_cliente, data_hora, servico, status)
-            VALUES(:funcionario_id, :nome_cliente, :telefone_cliente, :data_hora, :servico, :status)
+            INSERT INTO agendamentos(funcionario_id, 
+            nome_cliente, 
+            telefone_cliente, 
+            data_hora, servico, 
+            status, email_cliente, cpf_cliente)
+            VALUES(:funcionario_id, 
+            :nome_cliente, 
+            :telefone_cliente, 
+            :data_hora, :servico, :status, 
+            :mail_cliente, :cpf_cliente)
             """;
         entityManager.createNativeQuery(query)
                 .setParameter("funcionario_id", agendamentos.getFuncionarioID())
@@ -28,6 +36,8 @@ public class AgendamentoRepositoryImpl implements AgendamentosRepository {
                 .setParameter("data_hora", agendamentos.getDataHora())
                 .setParameter("servico", agendamentos.getServico())
                 .setParameter("status", agendamentos.getStatus())
+                .setParameter("email_cliente", agendamentos.getEmailCliente())
+                .setParameter("cpf_cliente", agendamentos.getCpfCliente())
                 .executeUpdate();
     }
 
@@ -41,16 +51,21 @@ public class AgendamentoRepositoryImpl implements AgendamentosRepository {
                 data_hora = :data_hora,
                 servico = :servico,
                 status = :status
+                cpf_cliente =:cpf_cliente,
+                email_cliente =:email_cliente
             WHERE id = :id
             """;
         entityManager.createNativeQuery(query)
                 .setParameter("funcionario_id", agendamentos.getFuncionarioID())
                 .setParameter("nome_cliente", agendamentos.getNomeCliente())
+                .setParameter("email_cliente", agendamentos.getEmailCliente())
+                .setParameter("cpf_cliente", agendamentos.getCpfCliente())
                 .setParameter("telefone_cliente", agendamentos.getTelefoneCliente())
                 .setParameter("data_hora", agendamentos.getDataHora())
                 .setParameter("servico", agendamentos.getServico())
                 .setParameter("status", agendamentos.getStatus())
                 .setParameter("id", id)
+
                 .executeUpdate();
     }
 

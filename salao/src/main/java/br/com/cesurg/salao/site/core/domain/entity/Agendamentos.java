@@ -29,6 +29,12 @@ public class Agendamentos {
     @Column(name = "status")
     private String status;
 
+    @Column (name = "email_cliente")
+    private String emailCliente;
+
+    @Column(name = "cpf_cliente")
+    private String cpfCliente;
+
     public int getId() {
         return id;
     }
@@ -83,6 +89,21 @@ public class Agendamentos {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+    public String getEmailCliente() {
+        return emailCliente;
+    }
+
+    public void setEmailCliente(String emailCliente) {
+        this.emailCliente = emailCliente;
+    }
+
+    public String getCpfCliente() {
+        return cpfCliente;
+    }
+
+    public void setCpfCliente(String cpfCliente) {
+        this.cpfCliente = cpfCliente;
     }
 }
 

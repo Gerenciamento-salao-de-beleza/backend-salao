@@ -32,6 +32,9 @@ public class Funcionarios {
     @Column(name = "dias_trabalhos")
     private String diasTrabalhos;
 
+
+
+
     public int getId() {
         return id;
     }
@@ -95,4 +98,6 @@ public class Funcionarios {
     public void setDuracaoMinutos(int duracaoMinutos) {
         this.duracaoMinutos = duracaoMinutos;
     }
+
+
 }
