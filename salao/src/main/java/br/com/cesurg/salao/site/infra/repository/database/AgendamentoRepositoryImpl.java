@@ -27,7 +27,7 @@ public class AgendamentoRepositoryImpl implements AgendamentosRepository {
             :nome_cliente, 
             :telefone_cliente, 
             :data_hora, :servico, :status, 
-            :mail_cliente, :cpf_cliente)
+            :email_cliente, :cpf_cliente)
             """;
         entityManager.createNativeQuery(query)
                 .setParameter("funcionario_id", agendamentos.getFuncionarioID())
